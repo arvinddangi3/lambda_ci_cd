@@ -33,7 +33,12 @@ jobs:
         run: npm prune --omit=dev
 
       - name: Create Lambda ZIP
-        run: zip -r lambda.zip dist node_modules package.json package-lock.json
+        run: |
+          zip -r lambda.zip \
+            dist \
+            node_modules \
+            package.json \
+            package-lock.json
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
